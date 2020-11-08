@@ -10,7 +10,7 @@
 
 #include "docopt.h"
 
-#define FRAME_LEN   0.030 /* 30 ms. */
+#define FRAME_LEN   0.050 /* 50 ms. */
 #define FRAME_SHIFT 0.015 /* 15 ms. */
 
 using namespace std;

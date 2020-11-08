@@ -9,14 +9,10 @@ using namespace std;
 /// Name space of UPC
 namespace upc
 {
-  float alpha = 0.5;
   void PitchAnalyzer::autocorrelation(const vector<float> &x, vector<float> &r) const
   {
-
     for (unsigned int l = 0; l < r.size(); ++l)
     {
-      /// \TODO Compute the autocorrelation r[l]
-      /// \DONE Autocorrelation Implemented
       for (unsigned int n = 0; n < x.size() - l; ++n)
       {
         r[l] += x[n] * x[n + l];
@@ -33,16 +29,22 @@ namespace upc
       return;
 
     window.resize(frameLen);
+    window.assign(frameLen, 0);
 
     switch (win_type)
     {
     case HAMMING:
-      for (unsigned int i = 0; i < frameLen; ++i)
-        window[i] = (0.53836-0.46164*cos(2*i*M_1_PI/(frameLen-1)));
+      for (unsigned int i = 0; i < frameL; ++i)
+        window[i] = (0.53836-0.46164*cos(2*i*M_1_PI/(frameL-1)));
       break;
+
     case RECT:
+      for (unsigned int i = 0; i < frameL; ++i)
+        window[i] = 1;
+      break;
+
     default:
-      window.assign(frameLen, 1);
+      window.assign(frameL, 1);
     }
   }
 
@@ -59,55 +61,88 @@ namespace upc
       npitch_max = frameLen / 2;
   }
 
-  bool PitchAnalyzer::unvoiced(float pot, float r1norm, float rmaxnorm) const
+  bool PitchAnalyzer::unvoiced(float pot, float r1norm, float rmaxnorm, float ZCR) const
   {
-    /// \TODO Implement a rule to decide whether the sound is voiced or not.
-    /// * You can use the standard features (pot, r1norm, rmaxnorm),
-    ///   or compute and use other ones.
-    /// \DONE First implementation using only rmax norm.
-
-    if (rmaxnorm > alpha)
-    return false;
-    else return true;
+    if (ZCR > ZCR_th && rmaxnorm < rmax_th)
+      return true;
+    if (ZCR < ZCR_th && rmaxnorm > rmax_th)
+      return false;
+    if (pot < P_th)
+      return true;
+    else
+      return false;
   }
 
   float PitchAnalyzer::compute_pitch(vector<float> &x) const
   {
-    if (x.size() != frameLen)
-      return -1.0F;
+
+    // Step 1: Correlation Method
+    vector<float> r(npitch_max);
+
+    for (unsigned int l = 0; l < r.size(); ++l)
+    {
+      for (unsigned int n = 0; n < W - l; ++n)
+      {
+        r[l] += x[n] * x[n + l];
+      }
+    }
+
+    // Step 2: Diference Function
+    vector<float> d(npitch_max);
+    float rt = 0;
+
+    for(unsigned int l = 0; l < d.size(); l++){
+      rt = 0;
+      for (unsigned int n = l; n < l + W; ++n)
+      {
+        rt += x[n] * x[n];
+      }
+      d[l] = (r[0] + rt - 2 * r[l])/(W - l);
+    }
+
+    // Step 3: Cumulative Mean Normalized Difference Function
+    float sum = 0;
+    d[0] = 1;
+
+    for (unsigned int l = 1; l < d.size(); l++){
+      sum += d[l];
+      d[l] = d[l]*l/sum;
+    }
+
+    // Step 4: Absolute Threshold
+    unsigned int lag = npitch_min;
+    bool check = true;
+    float Dmin = 2;
+    for (unsigned int i = npitch_min; ((i < d.size()) && check); ++i)
+    {
+      if (d[i] < Dmin) {
+        Dmin = d[i];
+        lag = i;
+      }
+      if (d[i] < 0.11){
+        lag = i;
+        check = false;
+      }
+    }
+    
+    float ZCR = 0;
+
+    for (unsigned int n = 1; n < frameL; n++)
+    {
+      if (x[n] * x[n - 1] < 0)
+        ZCR++;
+    }
+    ZCR = samplingFreq * ZCR / (2 * (frameL - 1));
 
     //Window input frame
     for (unsigned int i = 0; i < x.size(); ++i)
       x[i] *= window[i];
-
-    vector<float> r(npitch_max);
-
-    //Compute correlation
+    r.assign(r.size(), 0);
     autocorrelation(x, r);
-
-    vector<float>::const_iterator iR = r.begin(), iRMax = iR;
-
-    /// \TODO
-    /// Find the lag of the maximum value of the autocorrelation away from the origin.<br>
-    /// Choices to set the minimum value of the lag are:
-    ///    - The first negative value of the autocorrelation.
-    ///    - The lag corresponding to the maximum value of the pitch.
-    ///	   .
-    /// In either case, the lag should not exceed that of the minimum value of the pitch.
-    
-    unsigned int lag = 0;
-    float Pmax = 0;
-    for (unsigned int i = 0; iR != r.end(); ++iR)
-    {
-      if ((*iR > Pmax) && (i > npitch_min) && (i < npitch_max)){
-        lag = i;
-        Pmax = *iR;
-      }
-      ++i;
-    }
-
     float pot = 10 * log10(r[0]);
-    printf("%f",  (float)lag);
+
+
+
 
     //You can print these (and other) features, look at them using wavesurfer
     //Based on that, implement a rule for unvoiced
@@ -117,7 +152,7 @@ namespace upc
       cout << pot << '\t' << r[1]/r[0] << '\t' << r[lag]/r[0] << endl;
 #endif
 
-    if (unvoiced(pot, r[1] / r[0], r[lag] / r[0]))
+    if (unvoiced(pot, r[1] / r[0], r[lag] / r[0], ZCR))
       return 0;
     else
       return (float)samplingFreq / (float)lag;
