@@ -7,13 +7,13 @@
 #include <algorithm>
 
 namespace upc {
-  const float MIN_F0 = 50.0F;    ///< Minimum value of pitch in Hertzs
-  const float MAX_F0 = 500.0F; ///< Maximum value of pitch in Hertzs
+  const float MIN_F0 = 40.0F;    ///< Minimum value of pitch in Hertzs
+  const float MAX_F0 = 800.0F; ///< Maximum value of pitch in Hertzs
   const float THRESHOLD = 0.1; ///< Threshold for the YIN PDA
   const float ZCR_THRESHOLD = 2000;
   const float P_THRESHOLD = -20;
-  const float RMAX_THRESHOLD = 0.35;
-  const float R1_THRESHOLD = 0.75;
+  const float RMAX_THRESHOLD = 0.4;
+  const float R1_THRESHOLD = 0.8;
 
   ///
   /// PitchAnalyzer: class that computes the pitch (in Hz) from a signal frame.

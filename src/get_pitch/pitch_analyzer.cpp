@@ -63,8 +63,8 @@ namespace upc
 
   bool PitchAnalyzer::unvoiced(float pot, float r1norm, float rmaxnorm, float ZCR) const
   {
-    if (ZCR > ZCR_th) return true;
-    else if ((r1norm > r1_th) && (rmaxnorm > rmax_th)) return false;
+    //if (ZCR > ZCR_th) return true;
+    if ((r1norm > r1_th) && (rmaxnorm > rmax_th)) return false;
     else return true;
   }
 
