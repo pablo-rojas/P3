@@ -63,14 +63,16 @@ namespace upc
 
   bool PitchAnalyzer::unvoiced(float pot, float r1norm, float rmaxnorm, float ZCR) const
   {
-    //if (ZCR > ZCR_th) return true;
-    if ((r1norm > r1_th) && (rmaxnorm > rmax_th)) return false;
-    else return true;
+     if ((r1norm > r1_th) && (rmaxnorm > rmax_th) && (pot > P_th))
+      return false;
+    else if (ZCR < ZCR_th) return false;
+    else
+      return true;
+
   }
 
   float PitchAnalyzer::compute_pitch(vector<float> &x) const
   {
-
     // Step 1: Correlation Method
     vector<float> r(npitch_max);
 
@@ -107,6 +109,7 @@ namespace upc
     // Step 4: Absolute Threshold
     unsigned int lag = npitch_min;
     bool check = true;
+    bool b = false;
     float Dmin = 2;
     for (unsigned int i = npitch_min; ((i < d.size()) && check); ++i)
     {
@@ -114,12 +117,18 @@ namespace upc
         Dmin = d[i];
         lag = i;
       }
-      if (d[i] < 0.11){
+      if (d[i] < th){
         lag = i;
-        check = false;
+        b = true;
       }
+      if (d[i] > th && b) check = false;
     }
     
+    // Step 5: Parabolic Interpolation
+    float lag_f = (float) lag + 0.5*(d[lag-1] - d[lag+1])/(d[lag-1] + d[lag+1]);
+
+
+    // Compute ZCR
     float ZCR = 0;
 
     for (unsigned int n = 1; n < frameL; n++)
@@ -128,6 +137,7 @@ namespace upc
         ZCR++;
     }
     ZCR = samplingFreq * ZCR / (2 * (frameL - 1));
+    
 
     //Window input frame
     for (unsigned int i = 0; i < x.size(); ++i)
@@ -135,9 +145,6 @@ namespace upc
     r.assign(r.size(), 0);
     autocorrelation(x, r);
     float pot = 10 * log10(r[0]);
-
-
-
 
     //You can print these (and other) features, look at them using wavesurfer
     //Based on that, implement a rule for unvoiced
@@ -150,6 +157,6 @@ namespace upc
     if (unvoiced(pot, r[1] / r[0], r[lag] / r[0], ZCR))
       return 0;
     else
-      return (float)samplingFreq / (float)lag;
+      return (float)samplingFreq / lag_f;
   }
 } // namespace upc

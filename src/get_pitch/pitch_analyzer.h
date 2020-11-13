@@ -9,11 +9,11 @@
 namespace upc {
   const float MIN_F0 = 40.0F;    ///< Minimum value of pitch in Hertzs
   const float MAX_F0 = 800.0F; ///< Maximum value of pitch in Hertzs
-  const float THRESHOLD = 0.1; ///< Threshold for the YIN PDA
-  const float ZCR_THRESHOLD = 2000;
-  const float P_THRESHOLD = -20;
-  const float RMAX_THRESHOLD = 0.4;
-  const float R1_THRESHOLD = 0.8;
+  const float THRESHOLD = 0.01; ///< Threshold for the YIN PDA
+  const float ZCR_THRESHOLD = 0.00;
+  const float P_THRESHOLD = -44;
+  const float RMAX_THRESHOLD = 0.36;
+  const float R1_THRESHOLD = 0.69;
 
   ///
   /// PitchAnalyzer: class that computes the pitch (in Hz) from a signal frame.
@@ -54,25 +54,24 @@ namespace upc {
 	///
     bool unvoiced(float pot, float r1norm, float rmaxnorm, float ZCR) const;
 
-
+//           float threshold = THRESHOLD, ///< Threshold for Step 4
   public:
     PitchAnalyzer(	unsigned int fLen,			///< Frame length in samples
 					unsigned int sFreq,			///< Sampling rate in Hertzs
 					Window w=PitchAnalyzer::RECT,	///< Window type
 					float min_F0 = MIN_F0,		///< Pitch range should be restricted to be above this value
 					float max_F0 = MAX_F0,	///< Pitch range should be restricted to be below this value
-          float threshold = THRESHOLD, ///< Threshold for Step 4
           float zcr = ZCR_THRESHOLD,
           float p = P_THRESHOLD,
           float rmax = RMAX_THRESHOLD,
           float r1 = R1_THRESHOLD
 				 )
 	{
-      ZCR_th = zcr;
+      ZCR_th = zcr*sFreq;
       P_th = p;
       rmax_th = rmax;
       r1_th = R1_THRESHOLD;
-      th = threshold;
+      th = THRESHOLD;
       frameLen = fLen;
       samplingFreq = sFreq;
       W = (unsigned int) (0.025*sFreq);

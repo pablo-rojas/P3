@@ -22,13 +22,17 @@ static const char USAGE[] = R"(
 get_pitch - Pitch Detector 
 
 Usage:
-    get_pitch [options] <input-wav> <output-txt>
+    get_pitch [--power <pot>] [--rmaxnorm <rmax>] [--r1norm <r1>] [--zcr <rmax>] <input-wav> <output-txt>
     get_pitch (-h | --help)
     get_pitch --version
 
 Options:
     -h, --help  Show this screen
     --version   Show the version of the project
+    --power <pot>      Power threshold for the detector [default: -44]
+    --rmaxnorm <rmax>  Normalized rmax threshold for the detector [default: 0.36]
+    --r1norm <r1>      Normalized r1 threshold for the detector [default: 0.69]
+    --zcr <z>       Normalized rmax threshold for the detector [default: 0.0]
 
 Arguments:
     input-wav   Wave file with the audio signal
@@ -62,7 +66,12 @@ int main(int argc, const char *argv[]) {
   unsigned int n_filter = rate * FILTER_LEN;
 
   // Define analyzer
-  PitchAnalyzer analyzer(n_len, rate, PitchAnalyzer::RECT, 50, 500);
+
+    float pot = std::stof(args["--power"].asString());
+    float rmax = std::stof(args["--rmaxnorm"].asString());
+    float r1 = std::stof(args["--r1norm"].asString());
+    float zcr = std::stof(args["--zcr"].asString());
+    PitchAnalyzer analyzer(n_len, rate, PitchAnalyzer::RECT, 50, 500, zcr, pot, rmax, r1);
 
   /// \TODO
   /// Preprocess the input signal in order to ease pitch estimation. For instance,
@@ -104,6 +113,8 @@ int main(int argc, const char *argv[]) {
   vector<float> fo(f0.size());
   unsigned int n_max;
   unsigned int n_min;
+  float mean = 0;
+  unsigned int num = 0;
 
   for (unsigned int n = 1; n < f0.size()-1; n++){
     if ((f0[n] != 0) && ((f0[n-1] != 0) || (f0[n+1] != 0) )) {
@@ -123,10 +134,19 @@ int main(int argc, const char *argv[]) {
     } else {
       fo[n] = f0[n];
     }
+    if (fo[n] != 0){
+      mean = mean + fo[n];
+      num++;
+    }
   } 
+  mean = mean/num;
 
   for (unsigned int n = 1; n < f0.size()-1; n++){
+    if ((fo[n] >= 500.0) || (abs(fo[n] - mean)/mean > 0.44)){
+      f0[n] = 0;
+    } else {
       f0[n] = fo[n];
+    }
   } 
 
 
@@ -140,6 +160,7 @@ int main(int argc, const char *argv[]) {
   os << 0 << '\n'; //pitch at t=0
   for (iX = f0.begin(); iX != f0.end(); ++iX) 
     os << *iX << '\n';
+  os << 0 << '\n';//pitch at t=Dur
   os << 0 << '\n';//pitch at t=Dur
 
   return 0;

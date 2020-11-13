@@ -1,7 +1,13 @@
 #!/bin/bash
 
 # Put here the program (maybe with path)
-GETF0="get_pitch"
+
+pot=-44
+rmax=0.36
+r1=0.69
+zcr=0.5
+
+GETF0="get_pitch --power "$pot" --rmaxnorm "$rmax" --r1norm "$r1" --zcr "$zcr
 
 for fwav in pitch_db/train/*.wav; do
     ff0=${fwav/.wav/.f0}
