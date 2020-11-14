@@ -3,9 +3,9 @@
 # Put here the program (maybe with path)
 
 pot=-44
-rmax=0.36
-r1=0.69
-zcr=0.5
+rmax=0.35
+r1=0.68
+zcr=0.0
 
 GETF0="get_pitch --power "$pot" --rmaxnorm "$rmax" --r1norm "$r1" --zcr "$zcr
 

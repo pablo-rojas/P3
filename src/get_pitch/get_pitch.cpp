@@ -111,6 +111,7 @@ int main(int argc, const char *argv[]) {
   /// or time-warping may be used.
 
   vector<float> fo(f0.size());
+  vector<float> pitch(f0.size());
   unsigned int n_max;
   unsigned int n_min;
   float mean = 0;
@@ -136,13 +137,16 @@ int main(int argc, const char *argv[]) {
     }
     if (fo[n] != 0){
       mean = mean + fo[n];
+      pitch[num] = fo[n];
       num++;
     }
   } 
-  mean = mean/num;
+  pitch.resize(num);
+  std::sort(pitch.begin(), pitch.begin()+num);
+  mean = pitch[(int)num/2];
 
   for (unsigned int n = 1; n < f0.size()-1; n++){
-    if ((fo[n] >= 500.0) || (abs(fo[n] - mean)/mean > 0.44)){
+    if ((fo[n] >= 500.0) || (abs(fo[n] - mean)/mean > 0.6)){
       f0[n] = 0;
     } else {
       f0[n] = fo[n];
