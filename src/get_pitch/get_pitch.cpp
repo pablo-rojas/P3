@@ -22,7 +22,7 @@ static const char USAGE[] = R"(
 get_pitch - Pitch Detector 
 
 Usage:
-    get_pitch [--power <pot>] [--rmaxnorm <rmax>] [--r1norm <r1>] [--zcr <rmax>] <input-wav> <output-txt>
+    get_pitch [--power <pot>] [--rmaxnorm <rmax>] [--r1norm <r1>] [--zcr <z>] <input-wav> <output-txt>
     get_pitch (-h | --help)
     get_pitch --version
 
@@ -67,7 +67,7 @@ int main(int argc, const char *argv[]) {
 
   // Define analyzer
 
-    float pot = std::stof(args["--power"].asString());
+    float pot = -std::stof(args["--power"].asString());
     float rmax = std::stof(args["--rmaxnorm"].asString());
     float r1 = std::stof(args["--r1norm"].asString());
     float zcr = std::stof(args["--zcr"].asString());
@@ -143,10 +143,11 @@ int main(int argc, const char *argv[]) {
   } 
   pitch.resize(num);
   std::sort(pitch.begin(), pitch.begin()+num);
-  mean = pitch[(int)num/2];
+  //mean = pitch[(int)num/2];
+  mean = mean/num;
 
   for (unsigned int n = 1; n < f0.size()-1; n++){
-    if ((fo[n] >= 500.0) || (abs(fo[n] - mean)/mean > 0.6)){
+    if ((fo[n] >= 500.0) || (abs(fo[n] - mean)/mean > zcr)){
       f0[n] = 0;
     } else {
       f0[n] = fo[n];

@@ -1,0 +1,241 @@
+### Compare pitch_db/train/rl002.f0ref and pitch_db/train/rl002.f0
+Num. frames:	133 = 82 unvoiced + 51 voiced
+Unvoiced frames as voiced:	1/82 (1.22 %)
+Voiced frames as unvoiced:	10/51 (19.61 %)
+Gross voiced errors (+20.00 %):	0/41 (0.00 %)
+MSE of fine errors:	1.72 %
+
+===>	pitch_db/train/rl002.f0:	89.30 %
+--------------------------
+
+### Compare pitch_db/train/rl004.f0ref and pitch_db/train/rl004.f0
+Num. frames:	107 = 46 unvoiced + 61 voiced
+Unvoiced frames as voiced:	1/46 (2.17 %)
+Voiced frames as unvoiced:	23/61 (37.70 %)
+Gross voiced errors (+20.00 %):	0/38 (0.00 %)
+MSE of fine errors:	3.17 %
+
+===>	pitch_db/train/rl004.f0:	75.00 %
+--------------------------
+
+### Compare pitch_db/train/rl006.f0ref and pitch_db/train/rl006.f0
+Num. frames:	133 = 64 unvoiced + 69 voiced
+Unvoiced frames as voiced:	2/64 (3.12 %)
+Voiced frames as unvoiced:	12/69 (17.39 %)
+Gross voiced errors (+20.00 %):	0/57 (0.00 %)
+MSE of fine errors:	2.51 %
+
+===>	pitch_db/train/rl006.f0:	87.21 %
+--------------------------
+
+### Compare pitch_db/train/rl008.f0ref and pitch_db/train/rl008.f0
+Num. frames:	133 = 86 unvoiced + 47 voiced
+Unvoiced frames as voiced:	1/86 (1.16 %)
+Voiced frames as unvoiced:	10/47 (21.28 %)
+Gross voiced errors (+20.00 %):	0/37 (0.00 %)
+MSE of fine errors:	2.20 %
+
+===>	pitch_db/train/rl008.f0:	88.44 %
+--------------------------
+
+### Compare pitch_db/train/rl010.f0ref and pitch_db/train/rl010.f0
+Num. frames:	167 = 66 unvoiced + 101 voiced
+Unvoiced frames as voiced:	0/66 (0.00 %)
+Voiced frames as unvoiced:	34/101 (33.66 %)
+Gross voiced errors (+20.00 %):	2/67 (2.99 %)
+MSE of fine errors:	1.99 %
+
+===>	pitch_db/train/rl010.f0:	77.47 %
+--------------------------
+
+### Compare pitch_db/train/rl012.f0ref and pitch_db/train/rl012.f0
+Num. frames:	113 = 69 unvoiced + 44 voiced
+Unvoiced frames as voiced:	2/69 (2.90 %)
+Voiced frames as unvoiced:	8/44 (18.18 %)
+Gross voiced errors (+20.00 %):	0/36 (0.00 %)
+MSE of fine errors:	2.95 %
+
+===>	pitch_db/train/rl012.f0:	87.73 %
+--------------------------
+
+### Compare pitch_db/train/rl014.f0ref and pitch_db/train/rl014.f0
+Num. frames:	100 = 40 unvoiced + 60 voiced
+Unvoiced frames as voiced:	0/40 (0.00 %)
+Voiced frames as unvoiced:	9/60 (15.00 %)
+Gross voiced errors (+20.00 %):	0/51 (0.00 %)
+MSE of fine errors:	1.47 %
+
+===>	pitch_db/train/rl014.f0:	89.55 %
+--------------------------
+
+### Compare pitch_db/train/rl016.f0ref and pitch_db/train/rl016.f0
+Num. frames:	140 = 45 unvoiced + 95 voiced
+Unvoiced frames as voiced:	0/45 (0.00 %)
+Voiced frames as unvoiced:	31/95 (32.63 %)
+Gross voiced errors (+20.00 %):	0/64 (0.00 %)
+MSE of fine errors:	2.63 %
+
+===>	pitch_db/train/rl016.f0:	75.34 %
+--------------------------
+
+### Compare pitch_db/train/rl018.f0ref and pitch_db/train/rl018.f0
+Num. frames:	80 = 21 unvoiced + 59 voiced
+Unvoiced frames as voiced:	0/21 (0.00 %)
+Voiced frames as unvoiced:	5/59 (8.47 %)
+Gross voiced errors (+20.00 %):	0/54 (0.00 %)
+MSE of fine errors:	2.23 %
+
+===>	pitch_db/train/rl018.f0:	90.36 %
+--------------------------
+
+### Compare pitch_db/train/rl020.f0ref and pitch_db/train/rl020.f0
+Num. frames:	80 = 55 unvoiced + 25 voiced
+Unvoiced frames as voiced:	1/55 (1.82 %)
+Voiced frames as unvoiced:	9/25 (36.00 %)
+Gross voiced errors (+20.00 %):	0/16 (0.00 %)
+MSE of fine errors:	2.75 %
+
+===>	pitch_db/train/rl020.f0:	81.21 %
+--------------------------
+
+### Compare pitch_db/train/rl022.f0ref and pitch_db/train/rl022.f0
+Num. frames:	200 = 148 unvoiced + 52 voiced
+Unvoiced frames as voiced:	1/148 (0.68 %)
+Voiced frames as unvoiced:	12/52 (23.08 %)
+Gross voiced errors (+20.00 %):	0/40 (0.00 %)
+MSE of fine errors:	1.73 %
+
+===>	pitch_db/train/rl022.f0:	89.19 %
+--------------------------
+
+### Compare pitch_db/train/rl024.f0ref and pitch_db/train/rl024.f0
+Num. frames:	200 = 144 unvoiced + 56 voiced
+Unvoiced frames as voiced:	3/144 (2.08 %)
+Voiced frames as unvoiced:	10/56 (17.86 %)
+Gross voiced errors (+20.00 %):	0/46 (0.00 %)
+MSE of fine errors:	1.22 %
+
+===>	pitch_db/train/rl024.f0:	90.40 %
+--------------------------
+
+### Compare pitch_db/train/rl026.f0ref and pitch_db/train/rl026.f0
+Num. frames:	200 = 128 unvoiced + 72 voiced
+Unvoiced frames as voiced:	4/128 (3.12 %)
+Voiced frames as unvoiced:	15/72 (20.83 %)
+Gross voiced errors (+20.00 %):	0/57 (0.00 %)
+MSE of fine errors:	2.89 %
+
+===>	pitch_db/train/rl026.f0:	86.65 %
+--------------------------
+
+### Compare pitch_db/train/rl028.f0ref and pitch_db/train/rl028.f0
+Num. frames:	333 = 209 unvoiced + 124 voiced
+Unvoiced frames as voiced:	4/209 (1.91 %)
+Voiced frames as unvoiced:	15/124 (12.10 %)
+Gross voiced errors (+20.00 %):	0/109 (0.00 %)
+MSE of fine errors:	2.28 %
+
+===>	pitch_db/train/rl028.f0:	91.62 %
+--------------------------
+
+### Compare pitch_db/train/rl030.f0ref and pitch_db/train/rl030.f0
+Num. frames:	267 = 161 unvoiced + 106 voiced
+Unvoiced frames as voiced:	2/161 (1.24 %)
+Voiced frames as unvoiced:	23/106 (21.70 %)
+Gross voiced errors (+20.00 %):	0/83 (0.00 %)
+MSE of fine errors:	1.46 %
+
+===>	pitch_db/train/rl030.f0:	88.45 %
+--------------------------
+
+### Compare pitch_db/train/rl032.f0ref and pitch_db/train/rl032.f0
+Num. frames:	267 = 196 unvoiced + 71 voiced
+Unvoiced frames as voiced:	4/196 (2.04 %)
+Voiced frames as unvoiced:	19/71 (26.76 %)
+Gross voiced errors (+20.00 %):	0/52 (0.00 %)
+MSE of fine errors:	1.89 %
+
+===>	pitch_db/train/rl032.f0:	86.24 %
+--------------------------
+
+### Compare pitch_db/train/rl034.f0ref and pitch_db/train/rl034.f0
+Num. frames:	267 = 211 unvoiced + 56 voiced
+Unvoiced frames as voiced:	3/211 (1.42 %)
+Voiced frames as unvoiced:	13/56 (23.21 %)
+Gross voiced errors (+20.00 %):	0/43 (0.00 %)
+MSE of fine errors:	3.23 %
+
+===>	pitch_db/train/rl034.f0:	87.20 %
+--------------------------
+
+### Compare pitch_db/train/rl036.f0ref and pitch_db/train/rl036.f0
+Num. frames:	267 = 167 unvoiced + 100 voiced
+Unvoiced frames as voiced:	4/167 (2.40 %)
+Voiced frames as unvoiced:	20/100 (20.00 %)
+Gross voiced errors (+20.00 %):	0/80 (0.00 %)
+MSE of fine errors:	2.14 %
+
+===>	pitch_db/train/rl036.f0:	88.07 %
+--------------------------
+
+### Compare pitch_db/train/rl038.f0ref and pitch_db/train/rl038.f0
+Num. frames:	267 = 211 unvoiced + 56 voiced
+Unvoiced frames as voiced:	1/211 (0.47 %)
+Voiced frames as unvoiced:	13/56 (23.21 %)
+Gross voiced errors (+20.00 %):	0/43 (0.00 %)
+MSE of fine errors:	1.60 %
+
+===>	pitch_db/train/rl038.f0:	89.76 %
+--------------------------
+
+### Compare pitch_db/train/rl040.f0ref and pitch_db/train/rl040.f0
+Num. frames:	267 = 152 unvoiced + 115 voiced
+Unvoiced frames as voiced:	3/152 (1.97 %)
+Voiced frames as unvoiced:	18/115 (15.65 %)
+Gross voiced errors (+20.00 %):	0/97 (0.00 %)
+MSE of fine errors:	1.90 %
+
+===>	pitch_db/train/rl040.f0:	90.07 %
+--------------------------
+
+### Compare pitch_db/train/rl042.f0ref and pitch_db/train/rl042.f0
+Num. frames:	267 = 167 unvoiced + 100 voiced
+Unvoiced frames as voiced:	4/167 (2.40 %)
+Voiced frames as unvoiced:	23/100 (23.00 %)
+Gross voiced errors (+20.00 %):	0/77 (0.00 %)
+MSE of fine errors:	2.50 %
+
+===>	pitch_db/train/rl042.f0:	86.43 %
+--------------------------
+
+### Compare pitch_db/train/rl044.f0ref and pitch_db/train/rl044.f0
+Num. frames:	267 = 131 unvoiced + 136 voiced
+Unvoiced frames as voiced:	1/131 (0.76 %)
+Voiced frames as unvoiced:	26/136 (19.12 %)
+Gross voiced errors (+20.00 %):	0/110 (0.00 %)
+MSE of fine errors:	2.90 %
+
+===>	pitch_db/train/rl044.f0:	87.22 %
+--------------------------
+
+### Compare pitch_db/train/rl046.f0ref and pitch_db/train/rl046.f0
+Num. frames:	267 = 191 unvoiced + 76 voiced
+Unvoiced frames as voiced:	4/191 (2.09 %)
+Voiced frames as unvoiced:	20/76 (26.32 %)
+Gross voiced errors (+20.00 %):	0/56 (0.00 %)
+MSE of fine errors:	1.64 %
+
+===>	pitch_db/train/rl046.f0:	86.52 %
+--------------------------
+
+### Compare pitch_db/train/rl048.f0ref and pitch_db/train/rl048.f0
+Num. frames:	267 = 162 unvoiced + 105 voiced
+Unvoiced frames as voiced:	3/162 (1.85 %)
+Voiced frames as unvoiced:	23/105 (21.90 %)
+Gross voiced errors (+20.00 %):	0/82 (0.00 %)
+MSE of fine errors:	2.75 %
+
+===>	pitch_db/train/rl048.f0:	86.87 %
+--------------------------
+
+### Compare pitch_db/train/rl050.f0ref and pitch_db/train/rl050.f0

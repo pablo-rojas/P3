@@ -65,7 +65,6 @@ namespace upc
   {
      if ((r1norm > r1_th) && (rmaxnorm > rmax_th) && (pot > P_th))
       return false;
-    else if (ZCR < ZCR_th) return false;
     else
       return true;
 
