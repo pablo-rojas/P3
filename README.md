@@ -128,7 +128,7 @@ Ejercicios de ampliación
 
   Para nuestro sistema de detección de pitch nos hemos basado prácticamente por completo en un estimador conocido bajo el nombre de YIN. Su funcionamiento y características se pueden encontrar en el articulo:
 
-    De Cheveigné, A., y Kawahara, H. (2002). YIN, a fundamental frequency estimator for speech and music. *The Journal of the Acoustical Society of America, 111*
+    De Cheveigné, A., y Kawahara, H. (2002). YIN, a fundamental frequency estimator for speech and music. *The Journal of the Acoustical Society of America, 111.*
 
     Sobre este método, hemos tenido que realizar diferentes adaptaciones y/o mejoras, para que pudiera funcionar en nuestro programa. Aquí debajo teneis un resumen de estas así como las consclusiones que hemos ido sacando:
 
