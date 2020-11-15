@@ -94,10 +94,15 @@ Ejercicios básicos
   * Optimice los parámetros de su sistema de detección de pitch e inserte una tabla con las tasas de error y el *score* TOTAL proporcionados por `pitch_evaluate` en la evaluación de la base de datos `pitch_db/train`..
 
       Summary
+      
       Num. frames:    11191 = 7036 unvoiced + 4155 voiced
+      
       Unvoiced frames as voiced:      214/7036 (3.04 %)
+      
       Voiced frames as unvoiced:      467/4155 (11.24 %)
+      
       Gross voiced errors (+20.00 %): 21/3688 (0.57 %)
+      
       MSE of fine errors:     2.62 %
 
       ===>    TOTAL:  90.83 %
