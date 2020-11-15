@@ -148,7 +148,7 @@ int main(int argc, const char *argv[]) {
 
   for (unsigned int n = 1; n < f0.size()-1; n++){
     if ((fo[n] >= 500.0) || (abs(fo[n] - mean)/mean > zcr)){
-      f0[n] = 0;
+        f0[n] = 0;
     } else {
       f0[n] = fo[n];
     }
